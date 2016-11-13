@@ -1,4 +1,4 @@
-package com.uet.reminder;
+package com.uet.reminder.GUI;
 
 import javax.swing.*;
 import java.awt.*;
