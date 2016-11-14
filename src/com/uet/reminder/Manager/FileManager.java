@@ -121,99 +121,65 @@ public class FileManager {
             if (!file.exists()) {
                 file.createNewFile();
             }
+            /**
+             * Khoi tao file co ten Data.txt
+             */
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write("");
-//            for (Note note : manager.getUserListNote()) {
-//                String s = note.getId();
-//                for (int i = 0; i < s.length(); i++) {
-//                    bw.append(s.charAt(i));
-//                }
-//                bw.append("_");
-//                s = note.getName();
-//                for (int i = 0; i < s.length(); i++) {
-//                    bw.append(s.charAt(i));
-//                }
-//                bw.append("_");
-//                s = note.getPlace();
-//                for (int i = 0; i < s.length(); i++) {
-//                    bw.append(s.charAt(i));
-//                }
-//                bw.append("_");
-//                s = note.getContent();
-//                for (int i = 0; i < s.length(); i++) {
-//                    if (s.charAt(i) == '_'){
-//                        bw.write('"');
-//                        bw.write('_');
-//                        bw.write('"');
-//                        continue;
-//                    }
-//                    bw.append(s.charAt(i));
-//                }
-//                bw.append("_");
-//                s = note.getTimeStart();
-//                for (int i = 0; i < s.length(); i++) {
-//                    bw.append(s.charAt(i));
-//                }
-//                bw.append("_");
-//                s = note.getTimeFinish();
-//                for (int i = 0; i < s.length(); i++) {
-//                    bw.append(s.charAt(i));
-//                }
-//                bw.append("_");
-//                s = "" + note.isRepeat();
-//                for (int i = 0; i < s.length(); i++) {
-//                    bw.append(s.charAt(i));
-//                }
-//                bw.append("_");
-//                s = "" + note.isDone();
-//                for (int i = 0; i < s.length(); i++) {
-//                    bw.append(s.charAt(i));
-//                }
-//                bw.append("\n");
-//            }
             for (ListNote list : manager.getUserListNote()) {
+                //In tung phan tu cua List
                 String s = list.getId();
+                //In ID List
                 for (int i = 0; i < s.length(); i++) {
                     bw.append(s.charAt(i));
                 }
                 bw.append('_');
+                //In Ten List
                 s = list.getName();
                 for (int i = 0; i < s.length(); i++) {
                     bw.append(s.charAt(i));
                 }
                 bw.append('_');
+                //In phan repeat cua List
                 s = list.getRepeat();
                 for (int i = 0; i < s.length(); i++) {
                     bw.append(s.charAt(i));
                 }
                 bw.append('_');
+                //In phan done cua List
                 s = list.getDone().toString();
                 for (int i = 0; i < s.length(); i++) {
                     bw.append(s.charAt(i));
                 }
                 bw.append('_');
+                //In so Note co trong List
                 s = String.valueOf(list.count());
                 for (int i = 0; i < s.length(); i++) {
                     bw.append(s.charAt(i));
                 }
                 for (Note note : list.getListNote()) {
+                //Liet ke cac Note trong List
                     bw.append('_');
+                    //In ID tung Note
                     s = note.getId();
                     for (int i = 0; i < s.length(); i++) {
                         bw.append(s.charAt(i));
                     }
                     bw.append("_");
+                    //In ten tung Note
                     s = note.getName();
                     for (int i = 0; i < s.length(); i++) {
                         bw.append(s.charAt(i));
                     }
                     bw.append("_");
+                    //In place cua tung Note
                     s = note.getPlace();
                     for (int i = 0; i < s.length(); i++) {
                         bw.append(s.charAt(i));
                     }
                     bw.append("_");
+                    //In Noi cung
                     s = note.getContent();
                     for (int i = 0; i < s.length(); i++) {
                         if (s.charAt(i) == '_') {
@@ -225,27 +191,32 @@ public class FileManager {
                         bw.append(s.charAt(i));
                     }
                     bw.append("_");
+                    //In thoi gian Start
                     s = note.getTimeStart();
                     for (int i = 0; i < s.length(); i++) {
                         bw.append(s.charAt(i));
                     }
                     bw.append("_");
+                    //In thoi gian Finish
                     s = note.getTimeFinish();
                     for (int i = 0; i < s.length(); i++) {
                         bw.append(s.charAt(i));
                     }
                     bw.append("_");
+                    //In Repeat
                     s = "" + note.isRepeat();
                     for (int i = 0; i < s.length(); i++) {
                         bw.append(s.charAt(i));
                     }
                     bw.append("_");
+                    //In Done cua Note
                     s = "" + note.isDone();
                     for (int i = 0; i < s.length(); i++) {
                         bw.append(s.charAt(i));
                     }
                 }
                 bw.append("\n");
+                //Xuong dong khi doi Note
             }
             bw.close();
         } catch (IOException e) {
