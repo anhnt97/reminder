@@ -12,6 +12,13 @@ public class ListNote {
     ArrayList<Note> listNote = new ArrayList<>();
     Boolean done;
 
+    public ListNote(String name, String id, String repeat, Boolean done) {
+        this.name = name;
+        this.id = id;
+        this.repeat = repeat;
+        this.done = done;
+    }
+
     public void addNote(Note newNote){
         listNote.add(newNote);
     }
@@ -75,6 +82,10 @@ public class ListNote {
         return kq;
     }
 
+    public int count(){
+        return listNote.size();
+    }
+
     public String getName() {
         return name;
     }
@@ -105,5 +116,9 @@ public class ListNote {
 
     public void setDone(Boolean done) {
         this.done = done;
+    }
+
+    public ArrayList<Note> getListNote() {
+        return listNote;
     }
 }

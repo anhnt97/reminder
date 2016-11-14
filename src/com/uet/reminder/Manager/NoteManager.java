@@ -8,7 +8,7 @@ import java.util.List;
  * Class doi tuong com.uet.quanlycongviec.main.manager.NoteManager quan li danh sach cac com.uet.quanlycongviec.main.manager.Note
  */
 public class NoteManager {
-    ArrayList<ListNote> userListNote;
+    ArrayList<ListNote> userListNote = new ArrayList<>();
 
     /**
      * Them 1 listNote moi vao danh sach
@@ -76,5 +76,9 @@ public class NoteManager {
             }
         }
         return null;
+    }
+
+    public ArrayList<ListNote> getUserListNote() {
+        return userListNote;
     }
 }
