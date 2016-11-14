@@ -30,6 +30,7 @@ public class FileManager {
             Note newNote = new Note();
             String s = new String();
             line = br.readLine();
+            int num;
             while(line != null) {
                 s = new String();
                 int i = 0;
@@ -66,7 +67,7 @@ public class FileManager {
                     i++;
                 }
                 i++;
-                int num = Integer.parseInt(s);
+                num = Integer.parseInt(s);
                 for (int t = 0; t < num; t++) {
                 //manager.add(newNote);
                     newNote = new Note();
@@ -145,6 +146,7 @@ public class FileManager {
                 }
                 manager.add(newList);
                 line = br.readLine();
+                newNote = new Note();
             }
             br.close();
 
