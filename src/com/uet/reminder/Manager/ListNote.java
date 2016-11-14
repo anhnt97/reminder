@@ -12,6 +12,9 @@ public class ListNote {
     ArrayList<Note> listNote = new ArrayList<>();
     Boolean done;
 
+    public ListNote() {
+    }
+
     public ListNote(String name, String id, String repeat, Boolean done) {
         this.name = name;
         this.id = id;

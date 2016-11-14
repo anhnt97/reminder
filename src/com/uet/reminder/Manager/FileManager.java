@@ -17,100 +17,142 @@ public class FileManager {
 
     /**
      * Doc file
-     * @param manager
      * @throws IOException
      */
-//    public void readFile(NoteManager manager) throws IOException {
-//        try {
-//            // if file doesnt exists, then create it
-//            FileReader fr = new FileReader(file.getAbsoluteFile());
-//            BufferedReader br = new BufferedReader(fr);
-//            String line;
-//            manager.getUserListNote().clear();
-//            Note newNote = new Note();
-//            String s = new String();
-//            line = br.readLine();
-//            while(line != null) {
-//                s = new String();
-//                int i = 0;
-//                while (line.charAt(i) != '_' && newNote.getName() == null) {
-//                    s += line.charAt(i);
-//                    i++;
-//                }
-//                newNote.setId(s);
-//                s = new String();
-//                i++;
-//                while (line.charAt(i) != '_' && newNote.getName() == null) {
-//                    s += line.charAt(i);
-//                    i++;
-//                }
-//                newNote.setName(s);
-//                s = new String();
-//                i++;
-//                while (line.charAt(i) != '_' && newNote.getPlace() == null) {
-//                    s += line.charAt(i);
-//                    i++;
-//                }
-//                newNote.setPlace(s);
-//                s = new String();
-//                i++;
-//                while(line.charAt(i) != '_' && newNote.getContent() == null) {
-//                    if (line.charAt(i) == '"') {
-//                        String t = String.valueOf('"' + line.charAt(i+1) + line.charAt(i+2));
-//                        String kt = String.valueOf('"' + '_' + '"');
-//                        if (t.equalsIgnoreCase(kt)) {
-//                            s += '_';
-//                            i += 3;
-//                        }
-//                    } else {
-//                        s += line.charAt(i);
-//                        i++;
-//                    }
-//                    if (i == line.length()) {
-//                        line = br.readLine();
-//                        i = 0;
-//                        s += '\n';
-//                    }
-//                }
-//                newNote.setContent(s);
-//                s = new String();
-//                i++;
-//                while (line.charAt(i) != '_') {
-//                    s += line.charAt(i);
-//                    i++;
-//                }
-//                newNote.setTimeStart(s);
-//                s = new String();
-//                i++;
-//                while (line.charAt(i) != '_') {
-//                    s += line.charAt(i);
-//                    i++;
-//                }
-//                newNote.setTimeFinish(s);
-//                s = new String();
-//                i++;
-//                while (line.charAt(i) != '_') {
-//                    s += line.charAt(i);
-//                    i++;
-//                }
-//                newNote.setRepeat(s);
-//                s = new String();
-//                i++;
-//                while ( i != line.length() && line.charAt(i) != '_') {
-//                    s += line.charAt(i);
-//                    i++;
-//                }
-//                newNote.setDone(Boolean.parseBoolean(s));
-//                manager.add(newNote);
-//                newNote = new Note();
-//                line = br.readLine();
-//            }
-//            br.close();
-//        }
-//        catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void readFile() throws IOException {
+        try {
+            // if file doesnt exists, then create it
+            FileReader fr = new FileReader(file.getAbsoluteFile());
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            manager.getUserListNote().clear();
+            ListNote newList = new ListNote();
+            Note newNote = new Note();
+            String s = new String();
+            line = br.readLine();
+            while(line != null) {
+                s = new String();
+                int i = 0;
+                while (line.charAt(i) != '_' && newNote.getName() == null) {
+                    s += line.charAt(i);
+                    i++;
+                }
+                newList.setId(s);
+                s = new String();
+                i++;
+                while (line.charAt(i) != '_' && newNote.getName() == null) {
+                    s += line.charAt(i);
+                    i++;
+                }
+                newList.setName(s);
+                s = new String();
+                i++;
+                while (line.charAt(i) != '_') {
+                    s += line.charAt(i);
+                    i++;
+                }
+                newList.setRepeat(s);
+                s = new String();
+                i++;
+                while (line.charAt(i) != '_') {
+                    s += line.charAt(i);
+                    i++;
+                }
+                newList.setDone(Boolean.parseBoolean(s));
+                s = new String();
+                i++;
+                while (line.charAt(i) != '_') {
+                    s += line.charAt(i);
+                    i++;
+                }
+                i++;
+                int num = Integer.parseInt(s);
+                for (int t = 0; t < num; t++) {
+                //manager.add(newNote);
+                    newNote = new Note();
+                    s = new String();
+                    while (line.charAt(i) != '_' && newNote.getName() == null) {
+                        s += line.charAt(i);
+                        i++;
+                    }
+                    newNote.setId(s);
+                    s = new String();
+                    i++;
+                    while (line.charAt(i) != '_' && newNote.getName() == null) {
+                        s += line.charAt(i);
+                        i++;
+                    }
+                    newNote.setName(s);
+                    s = new String();
+                    i++;
+                    while (line.charAt(i) != '_' && newNote.getPlace() == null) {
+                        s += line.charAt(i);
+                        i++;
+                    }
+                    newNote.setPlace(s);
+                    s = new String();
+                    i++;
+                    while(line.charAt(i) != '_' && newNote.getContent() == null) {
+                        if (line.charAt(i) == '"') {
+                            String st = String.valueOf('"' + line.charAt(i+1) + line.charAt(i+2));
+                            String kt = String.valueOf('"' + '_' + '"');
+                            if (st.equalsIgnoreCase(kt)) {
+                                s += '_';
+                                i += 3;
+                            }
+                        } else {
+                            s += line.charAt(i);
+                            i++;
+                        }
+                        if (i == line.length()) {
+                            line = br.readLine();
+                            i = 0;
+                            s += '\n';
+                        }
+                    }
+                    newNote.setContent(s);
+                    s = new String();
+                    i++;
+                    while (line.charAt(i) != '_') {
+                        s += line.charAt(i);
+                        i++;
+                    }
+                    newNote.setTimeStart(s);
+                    s = new String();
+                    i++;
+                    while (line.charAt(i) != '_') {
+                        s += line.charAt(i);
+                        i++;
+                    }
+                    newNote.setTimeFinish(s);
+                    s = new String();
+                        i++;
+                    while (line.charAt(i) != '_') {
+                        s += line.charAt(i);
+                        i++;
+                    }
+                    newNote.setRepeat(s);
+                    s = new String();
+                    i++;
+                        while ( i != line.length() && line.charAt(i) != '_') {
+                        s += line.charAt(i);
+                        i++;
+                    }
+                    i++;
+                    newNote.setDone(Boolean.parseBoolean(s));
+                    //manager.add(newNote);
+                    newList.addNote(newNote);
+                }
+                manager.add(newList);
+                line = br.readLine();
+            }
+            br.close();
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Ghi file
@@ -233,6 +275,10 @@ public class FileManager {
      */
     public void update(){
         writeFile();
-        //readFile();
+        try {
+            readFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -81,4 +81,12 @@ public class NoteManager {
     public ArrayList<ListNote> getUserListNote() {
         return userListNote;
     }
+
+    public String toString(){
+        String kq = "";
+        for (ListNote list : userListNote) {
+            kq += list.info();
+        }
+        return kq;
+    }
 }
