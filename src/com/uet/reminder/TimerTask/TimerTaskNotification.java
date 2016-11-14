@@ -3,6 +3,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * Thong bao khi den lich lam viec
  * Created by tuana on 14/11/2016.
  */
 public class TimerTaskNotification {
