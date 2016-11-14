@@ -65,6 +65,9 @@ public class FileManager {
                 while (line.charAt(i) != '_') {
                     s += line.charAt(i);
                     i++;
+                    if (i == line.length()) {
+                        break;
+                    }
                 }
                 i++;
                 num = Integer.parseInt(s);

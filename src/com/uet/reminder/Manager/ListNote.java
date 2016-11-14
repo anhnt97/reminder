@@ -15,7 +15,7 @@ public class ListNote {
     public ListNote() {
     }
 
-    public ListNote(String name, String id, String repeat, Boolean done) {
+    public ListNote(String id, String name, String repeat, Boolean done) {
         this.name = name;
         this.id = id;
         this.repeat = repeat;
@@ -74,13 +74,14 @@ public class ListNote {
     }
 
     public String info(){
-        String kq;
-        kq = id + ": \n";
-        kq = name + ": \n";
-        kq = repeat + ": \n";
-        kq = done + ": \n";
+        String kq = "";
+        kq += "ListID   : " + id + "\n";
+        kq += "ListName : " + name  + "\n";
+        kq += "IsRepeat : " + repeat + "\n";
+        kq += "IsDone   : " + done + "\n";
         for (Note n : listNote) {
-            kq += n.info();
+            kq += "ID  : " + n.getId() + "\n";
+            kq += "Name: " + n.getName() + "\n";
         }
         return kq;
     }
