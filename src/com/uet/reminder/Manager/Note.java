@@ -26,9 +26,8 @@ public class Note {
     /**
      * Khoi tao
      */
-    public Note(String id, String name, String place, String content, String timeStart
+    public Note(String name, String place, String content, String timeStart
             , String timeFinish, String repeat, boolean done) {
-        this.id = id;
         this.name = name;
         this.place = place;
         this.content = content;
@@ -47,17 +46,6 @@ public class Note {
         timeFinish = new Time();
         repeat = "";
         done = false;
-    }
-
-    public Note(Note note) {
-        id = note.getId();
-        name = note.getName();
-        place = note.getPlace();
-        content = note.getContent();
-        timeStart.setTime(note.getTimeStart());
-        timeFinish.setTime(note.getTimeFinish());
-        repeat = note.isRepeat();
-        done = note.isDone();
     }
 
     /**

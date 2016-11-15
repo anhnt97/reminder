@@ -148,6 +148,7 @@ public class FileManager {
                     newList.addNote(newNote);
                 }
                 manager.add(newList);
+                newList = new ListNote();
                 line = br.readLine();
                 newNote = new Note();
             }

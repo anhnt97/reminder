@@ -8,7 +8,11 @@ import java.util.List;
  * Class doi tuong com.uet.quanlycongviec.main.manager.NoteManager quan li danh sach cac com.uet.quanlycongviec.main.manager.Note
  */
 public class NoteManager {
-    ArrayList<ListNote> userListNote = new ArrayList<>();
+    ArrayList<ListNote> userListNote;
+
+    public NoteManager() {
+        userListNote = new ArrayList<>();
+    }
 
     /**
      * Them 1 listNote moi vao danh sach
@@ -16,6 +20,7 @@ public class NoteManager {
      */
     public void add(ListNote newList) {
         userListNote.add(newList);
+        userListNote.get(userListNote.size() - 1).setId("L" + userListNote.size());
     }
 
     /**
@@ -45,8 +50,10 @@ public class NoteManager {
      */
     public void remove(ListNote assignListNote) {
         userListNote.remove(assignListNote);
+        for (int i = 0; i < userListNote.size(); i++) {
+            userListNote.get(i).setId("L" + (i+1));
+        }
     }
-
     /**
      *
      * @param value

@@ -9,21 +9,23 @@ import java.util.ArrayList;
  */
 public class ListNote {
     private String name, id, repeat;
-    ArrayList<Note> listNote = new ArrayList<>();
+    ArrayList<Note> listNote;
     Boolean done;
 
     public ListNote() {
+        listNote = new ArrayList<>();
     }
 
-    public ListNote(String id, String name, String repeat, Boolean done) {
+    public ListNote(String name, String repeat, Boolean done) {
+        listNote = new ArrayList<>();
         this.name = name;
-        this.id = id;
         this.repeat = repeat;
         this.done = done;
     }
 
     public void addNote(Note newNote){
         listNote.add(newNote);
+        listNote.get(listNote.size() - 1).setId("N" + listNote.size());
     }
 
     /**
@@ -52,8 +54,10 @@ public class ListNote {
      * @param assignNote
      */
     public void remove(Note assignNote) {
-        Note note = searchNote(assignNote.getName());
-        listNote.remove(note);
+        listNote.remove(assignNote);
+        for (int i = 0; i < listNote.size(); i++) {
+            listNote.get(i).setId("N" + (i + 1));
+        }
     }
 
     /**
