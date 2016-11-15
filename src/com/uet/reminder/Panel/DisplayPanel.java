@@ -17,9 +17,11 @@ public class DisplayPanel extends JPanel{
     /** label chua logo */
     JLabel lbLogo;
     /** anh logo */
-    Image logo;
+    Image imgLogo;
     /** Button tim kiem */
-    JButton search;
+    JButton btSearch;
+    /** text field tim kiem */
+    JTextField tfSearch;
     public DisplayPanel(){
         this.setLayout(null);
         this.setBounds(0,0, CommonVLs.WIDTH_SCREEN,CommonVLs.HEGHT_SCREEN);
@@ -31,8 +33,16 @@ public class DisplayPanel extends JPanel{
         lbLogo.setBounds(10,10,200,50);
         CommonVLs.setPicture(lbLogo,getClass().getResource("/image/reminder_logo.png").getPath());
         this.add(lbLogo);
-//        search = new JButton("Search");
-//        search.setBounds(20,30,100,50);
-//        this.add(search);
+        tfSearch = new JTextField();
+        tfSearch.setBounds(170,20,300,30);
+        this.add(tfSearch);
+        btSearch = new JButton("Search");
+
+        ImageIcon imgSearch = new ImageIcon(getClass().getResource("/image/search_icon.png"));
+        Image imgTemp = imgSearch.getImage();
+        Image newImg = imgTemp.getScaledInstance(20,20, Image.SCALE_SMOOTH);
+        btSearch.setIcon(new ImageIcon(newImg));
+        btSearch.setBounds(500,20,100,30);
+        this.add(btSearch);
     }
 }
