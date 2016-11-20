@@ -12,7 +12,7 @@ import java.io.IOException;
  * Created by tuan anh on 14/11/2016.
  */
 public class CommonVLs {
-   public static final int WIDTH_SCREEN = 700;
+   public static final int WIDTH_SCREEN = 800;
    public static final int HEGHT_SCREEN = 500;
    public static void setPicture(JLabel label, String fileName) {
       try {
