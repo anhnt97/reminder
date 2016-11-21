@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * hien thi trong noi dung trong tung phan tu jlist bang cong viec
  * Created by NhatAnh on 19/11/2016.
  */
 public class TaskListNotePanel extends JPanel implements ListCellRenderer<ListNote> {

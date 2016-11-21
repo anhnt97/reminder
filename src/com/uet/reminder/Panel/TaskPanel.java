@@ -1,33 +1,43 @@
 package com.uet.reminder.Panel;
 
+import com.uet.reminder.GUI.PanelMain;
 import com.uet.reminder.Manager.Note;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 
 /**
- * Hien thi danh sach cac cong viec cu the
+ * Hien thi danh sach cac list cong viec <to do list>
  * Created by tuana on 14/11/2016.
  */
-public class TaskPanel extends JPanel {
-    private Button btAdd;
-    private Button btEdit;
-    private Button btDelete;
+public class TaskPanel extends JPanel implements ListSelectionListener {
+    /**JButton them vao to do list*/
+    private JButton btAdd;
+    /**JButton chinh sua to do list*/
+    private JButton btEdit;
+    /**JButton xoa to do list*/
+    private JButton btDelete;
     private JLabel lbTimeCreate;
     private JLabel lbName;
     private JLabel lbRepeat;
     private JTextField tfTimeCreat;
+    /**JTextField ten bang cong viec chua cac to do list*/
     private JTextField tfName;
     private JTextField tfRepeat;
+    /**Jlist hien thi cac to do list*/
     private JList<Note> lTaskNotes;
     private DefaultListModel<Note> model;
+    private PanelMain panelMain;
 
-    public TaskPanel(){
+    public TaskPanel(PanelMain panelMain){
         initTaskPanel();
         model = new DefaultListModel<>();
         addModel(model);
         initCom();
+        this.panelMain = panelMain;
     }
 
     private void initTaskPanel() {
@@ -36,17 +46,17 @@ public class TaskPanel extends JPanel {
     }
 
     public void initCom(){
-        btAdd = new Button("ADD");
+        btAdd = new JButton("ADD");
         btAdd.setSize(80, 30);
         btAdd.setLocation(250,310 );
         add(btAdd);
 
-        btEdit = new Button("EDIT");
+        btEdit = new JButton("EDIT");
         btEdit.setSize(80,30);
         btEdit.setLocation(btAdd.getX() + btAdd.getWidth() + 10, btAdd.getY());
         add(btEdit);
 
-        btDelete = new Button("DELETE");
+        btDelete = new JButton("DELETE");
         btDelete.setSize(80,30);
         btDelete.setLocation(btEdit.getX() + btEdit.getWidth() + 10, btAdd.getY());
         add(btDelete);
@@ -95,6 +105,8 @@ public class TaskPanel extends JPanel {
         scrollPane.setBackground(Color.WHITE);
         scrollPane.setLocation(lbName.getX(), lbName.getY() + lbName.getHeight() + 20);
         add(scrollPane);
+
+        lTaskNotes.addListSelectionListener(this);
     }
 
     public void addModel(DefaultListModel<Note> model){
@@ -108,10 +120,16 @@ public class TaskPanel extends JPanel {
 //            model.addElement(getNoteManager().getNote(i));
 //        }
 
-        model.addElement(new Note("akssddasdasfasftttttt", "asa", "as","2:2.8/3/2", "2:2.8/3/2", "repeat", true));
+        model.addElement(new Note("Công việc đang làm", "asa", "as","2:2.8/3/2", "2:2.8/3/2", "repeat", true));
+        model.addElement(new Note("Công việc đã hoàn thành", "asa", "as","2:2.8/3/2", "2:2.8/3/2", "repeat", true));
+        model.addElement(new Note("Công việc chưa hoàn thành", "asa", "as","2:2.8/3/2", "2:2.8/3/2", "repeat", true));
         model.addElement(new Note("aks", "asa", "as","2:2.8/3/2", "2:2.8/3/2", "repeat", true));
         model.addElement(new Note("aks", "asa", "as","2:2.8/3/2", "2:2.8/3/2", "repeat", true));
-        model.addElement(new Note("aks", "asa", "as","2:2.8/3/2", "2:2.8/3/2", "repeat", true));
-        model.addElement(new Note("aks", "asa", "as","2:2.8/3/2", "2:2.8/3/2", "repeat", true));
+    }
+
+    /**Bat su kien click vao jlist se chuyen sang panel moi*/
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        panelMain.showCard(PanelMain.DISPLAY_TASK_PANEL);
     }
 }

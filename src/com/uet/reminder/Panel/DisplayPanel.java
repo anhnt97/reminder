@@ -1,6 +1,7 @@
 package com.uet.reminder.Panel;
 
 import com.uet.reminder.GUI.GUI;
+import com.uet.reminder.GUI.PanelMain;
 import com.uet.reminder.common.CommonVLs;
 
 import javax.imageio.ImageIO;
@@ -24,13 +25,19 @@ public class DisplayPanel extends JPanel{
     /** text field tim kiem */
     JTextField tfSearch;
 
+    /**Panel chua danh sach bang cong viec*/
     private TaskListPanel taskListPanel;
 
+    /**Panel chua danh sach TO DO - List */
     private TaskPanel taskPanel;
 
-    public DisplayPanel(){
+    private PanelMain panelMain;
+
+    public DisplayPanel(PanelMain panelMain){
         this.setLayout(null);
         this.setBounds(0,0, CommonVLs.WIDTH_SCREEN,CommonVLs.HEGHT_SCREEN);
+
+        this.panelMain = panelMain;
         initComponents();
     }
 
@@ -56,7 +63,7 @@ public class DisplayPanel extends JPanel{
         taskListPanel.setLocation(0, tfSearch.getY() + tfSearch.getHeight() + 40);
         this.add(taskListPanel);
 
-        taskPanel = new TaskPanel();
+        taskPanel = new TaskPanel(panelMain);
         taskPanel.setSize(CommonVLs.WIDTH_SCREEN - taskListPanel.getWidth() - taskListPanel.getX() - 40, taskListPanel.getHeight() - 20);
         taskPanel.setLocation(taskListPanel.getWidth() + taskListPanel.getX() + 30, taskListPanel.getY() + 20);
         this.add(taskPanel);

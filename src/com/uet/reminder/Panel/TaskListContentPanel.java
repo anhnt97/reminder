@@ -8,6 +8,15 @@ import javax.swing.*;
  */
 public class TaskListContentPanel extends JPanel{
     public TaskListContentPanel(){
+        initTaskListContentPanel();
+        initComs();
+    }
+
+    private void initTaskListContentPanel() {
+        setLayout(null);
+    }
+
+    public void initComs(){
 
     }
 }
